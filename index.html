@@ -1,808 +1,789 @@
-auto=format&fit=crop&q=80', 'Mateo en el Valle del Cauca')">
-                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop&q=80" alt="Perro Valle del Cauca" class="w-full h-full object-cover transition duration-500 group-hover:scale-110"><!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPETs - Localizadores GPS para Mascotas en Colombia</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fdf8f6',
-                            100: '#f2e8e1',
-                            500: '#6F3E1B',
-                            600: '#5c3214',
-                            700: '#4a270f',
-                        },
-                        purpleBrand: {
-                            800: '#4C1D95',
-                            900: '#3B0764',
-                            950: '#2e0252'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-        }
-        .hero-bg {
-            background: radial-gradient(circle at 10% 20%, rgba(245, 243, 255, 1) 0%, rgba(254, 243, 199, 0.3) 90%);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #6F3E1B 0%, #a1551a 50%, #4C1D95 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>+[Hive — Pure gold, made by bees]+</title>
+  <meta name="description" content="Hive No.01 — raw, single-origin wildflower honey. A scrollytelling prototype.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Libraries (CDN, pinned versions) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.13"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/MotionPathPlugin.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-ink: green; /*#0b0906;*/
+      --color-ink-2: #16110a;
+      --color-honey: #f6b40e;
+      --color-amber: #ff8a1f;
+      --color-cream: #fff3d6;
+      --font-sans: "Inter", system-ui, sans-serif;
+      --font-display: "Fraunces", Georgia, serif;
+    }
+  </style>
+
+  <style>
+    :root { --bee: clamp(96px, 12vw, 170px); }
+    html, body { background: #0b0906; }
+    body { color: #fff3d6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    section { position: relative; width: 100%; }
+    .pin { height: 100vh; overflow: hidden; }
+
+    .honeycomb {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23f6b40e' stroke-opacity='0.09' stroke-width='1'/%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(ellipse at 70% 50%, #000 10%, transparent 70%);
+              mask-image: radial-gradient(ellipse at 70% 50%, #000 10%, transparent 70%);
+    }
+    .glow {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(246,180,14,.32), rgba(255,138,31,.08) 45%, transparent 68%);
+    }
+
+    /* Split text */
+    .line { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
+    .word-wrap { display: inline-block; white-space: nowrap; }
+    .char { display: inline-block; will-change: transform; }
+
+    /* Bee: track (scroll path) > intro > bank (tilt) > face (flip) > float (idle) > svg (wings) */
+    #bee { position: fixed; left: 0; top: 0; width: var(--bee); aspect-ratio: 200 / 160; z-index: 40; pointer-events: none; visibility: hidden; will-change: transform; }
+    #bee .bee-layer { position: absolute; inset: 0; }
+    #bee svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 12px 28px rgba(246,180,14,.35)); }
+    .trail-dot { position: fixed; left: 0; top: 0; width: 7px; height: 7px; border-radius: 50%; background: #f6b40e; box-shadow: 0 0 12px #f6b40e; z-index: 39; pointer-events: none; opacity: 0; }
+
+    /* Nav */
+    #nav { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+    #nav.nav-hidden { transform: translateY(-110%); }
+    #progress { transform-origin: 0 50%; }
+
+    /* Gallery */
+    .gallery-track { display: flex; gap: clamp(16px, 3vw, 40px); width: max-content; padding: 0 8vw; }
+
+    /* Anatomy */
+    .anatomy-stage { position: absolute; left: 40%; top: 58%; width: 0; height: 0; }
+    @media (min-width: 768px) { .anatomy-stage { left: 46%; top: 55%; } }
+    .layer { position: absolute; left: 0; top: 0; width: min(50vw, 280px); translate: -50% -50%; }
+    .layer svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .layer-label { position: absolute; left: calc(100% + 14px); top: 30%; white-space: nowrap; display: flex; align-items: center; gap: 10px; }
+    .layer-label::before { content: ""; width: 28px; height: 1px; background: rgba(246,180,14,.6); }
+
+    /* Process */
+    .step-dot { position: absolute; top: .35rem; left: calc(1.25rem - 4rem - 7px); width: 16px; height: 16px; border-radius: 50%; background: #16110a; border: 2px solid rgba(255,243,214,.25); transition: all .4s ease; }
+    @media (min-width: 768px) { .step-dot { left: calc(2rem - 6rem - 7px); } }
+    .step.is-active .step-dot { background: #f6b40e; border-color: #f6b40e; box-shadow: 0 0 0 8px rgba(246,180,14,.15); }
+
+    @media (prefers-reduced-motion: reduce) { #nav { transition: none; } }
+  </style>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-purple-600 selection:text-white">
 
-    <!-- 1. BARRA DE NAVEGACIÓN -->
-    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-3.5 glass-nav border-b border-stone-200/60 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
-                <!-- Logo GPETs exact SVG representation -->
-                <a href="#inicio" class="flex items-center gap-2 group">
-                    <svg class="w-10 h-10 transition-transform group-hover:scale-105" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Paw Pad Circles -->
-                        <circle cx="70" cy="55" r="18" fill="#6F3E1B"/>
-                        <circle cx="100" cy="45" r="18" fill="#6F3E1B"/>
-                        <circle cx="130" cy="55" r="18" fill="#6F3E1B"/>
-                        <!-- Central Pin Body as Paw center -->
-                        <path d="M100 85 C80 85, 65 100, 65 120 C65 145, 100 175, 100 175 C100 175, 135 145, 135 120 C135 100, 120 85, 100 85 Z" stroke="#6F3E1B" stroke-width="10" fill="none" stroke-linejoin="round"/>
-                        <circle cx="100" cy="118" r="12" stroke="#6F3E1B" stroke-width="8" fill="none"/>
-                        <!-- Base oval -->
-                        <ellipse cx="100" cy="180" rx="25" ry="5" stroke="#6F3E1B" stroke-width="4" fill="none"/>
-                        <!-- Route path with arrow -->
-                        <path d="M115 160 C130 160, 145 150, 155 135" stroke="#6F3E1B" stroke-width="5" stroke-dasharray="6 6" fill="none"/>
-                        <path d="M152 125 L175 120 L168 142 L160 132 Z" fill="#6F3E1B"/>
-                        <!-- Dotted tech bits -->
-                        <rect x="150" y="95" width="7" height="7" fill="#6F3E1B"/>
-                        <rect x="162" y="105" width="7" height="7" fill="#6F3E1B"/>
-                        <rect x="140" y="110" width="6" height="6" fill="#6F3E1B"/>
-                    </svg>
-                    <span class="text-2xl font-extrabold tracking-tight text-[#6F3E1B]">GPE<span class="text-purple-800">Ts</span></span>
-                </a>
+<body class="font-sans">
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-700">
-                    <a href="#inicio" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Inicio</a>
-                    <a href="#mascotas" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Mascotas</a>
-                    <a href="#galeria" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Galería</a>
-                    <a href="#testimonios" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Nos Recomiendan</a>
-                    <a href="#productos" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Productos</a>
-                    <a href="#noticias" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Noticias</a>
-                    <a href="#contacto" class="hover:text-purple-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-700 hover:after:w-full after:transition-all">Contacto</a>
-                </nav>
+  <!-- Shared SVG definitions (jar + anatomy) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g-honey" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#b85e00"/><stop offset=".35" stop-color="#f6b40e"/><stop offset=".6" stop-color="#ffd25a"/><stop offset="1" stop-color="#a85200"/>
+      </linearGradient>
+      <linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".2" stop-color="#fff" stop-opacity=".04"/><stop offset=".8" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#fff" stop-opacity=".16"/>
+      </linearGradient>
+      <linearGradient id="g-lid" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#6b3d00"/><stop offset=".4" stop-color="#e0a020"/><stop offset=".7" stop-color="#ffd76a"/><stop offset="1" stop-color="#6b3d00"/>
+      </linearGradient>
+      <pattern id="p-comb" width="28" height="50" patternUnits="userSpaceOnUse">
+        <rect width="28" height="50" fill="#f6b40e"/>
+        <path d="M14 33L0 25L0 8L14 0L28 8L28 25L14 33L14 50" fill="none" stroke="#7a4200" stroke-width="2"/>
+      </pattern>
+    </defs>
+  </svg>
 
-                <!-- CTA Button -->
-                <div class="hidden lg:flex items-center gap-3">
-                    <a href="#productos" class="bg-gradient-to-r from-[#6F3E1B] to-purple-800 hover:opacity-95 text-white px-5 py-2.5 rounded-2xl font-bold text-sm shadow-md transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-                        <i class="fa-solid fa-cart-shopping text-xs"></i> Pedir en Colombia
-                    </a>
-                </div>
+  <!-- ============ THE BEE ============ -->
+  <div id="bee" aria-hidden="true">
+    <div class="bee-layer bee-intro">
+      <div class="bee-layer bee-bank">
+        <div class="bee-layer bee-face">
+          <div class="bee-layer bee-float">
+            <svg viewBox="0 0 200 160">
+              <defs>
+                <radialGradient id="g-bee-body" cx="40%" cy="30%" r="75%">
+                  <stop offset="0" stop-color="#ffe27a"/><stop offset=".55" stop-color="#f6b40e"/><stop offset="1" stop-color="#c46a00"/>
+                </radialGradient>
+                <radialGradient id="g-bee-head" cx="40%" cy="35%" r="70%">
+                  <stop offset="0" stop-color="#3d2c12"/><stop offset="1" stop-color="#0d0904"/>
+                </radialGradient>
+                <linearGradient id="g-bee-wing" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#d6ecff" stop-opacity=".25"/>
+                </linearGradient>
+                <clipPath id="clip-bee-body"><ellipse cx="96" cy="98" rx="54" ry="38"/></clipPath>
+              </defs>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-stone-100 transition-colors" aria-label="Abrir Menú">
-                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
-                </button>
-            </div>
+              <g id="wing-back">
+                <path d="M104 64 C 110 24, 140 2, 158 16 C 172 30, 146 56, 104 64Z" fill="url(#g-bee-wing)" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/>
+                <path d="M106 60 C 122 40, 138 26, 152 20" fill="none" stroke="#fff" stroke-opacity=".4"/>
+              </g>
+              <g stroke="#1a1207" stroke-width="4" stroke-linecap="round" fill="none">
+                <path d="M76 130 q -4 10 -12 13"/><path d="M98 134 q -2 10 -8 15"/><path d="M120 130 q 2 10 -2 15"/>
+              </g>
+              <path d="M44 94 L 24 100 L 44 106 Z" fill="#1a1207"/>
+              <ellipse cx="96" cy="98" rx="54" ry="38" fill="url(#g-bee-body)"/>
+              <g clip-path="url(#clip-bee-body)" fill="#1a1207">
+                <rect x="60" y="50" width="14" height="100" rx="6" transform="rotate(8 67 100)"/>
+                <rect x="88" y="50" width="15" height="100" rx="6" transform="rotate(5 95 100)"/>
+                <rect x="117" y="50" width="14" height="100" rx="6" transform="rotate(2 124 100)"/>
+              </g>
+              <ellipse cx="88" cy="78" rx="30" ry="9" fill="#fff" opacity=".28"/>
+              <circle cx="150" cy="90" r="26" fill="url(#g-bee-head)"/>
+              <circle cx="160" cy="84" r="8" fill="#fff"/>
+              <circle cx="162.5" cy="84.5" r="4.5" fill="#0d0904"/>
+              <circle cx="164.5" cy="81.5" r="1.6" fill="#fff"/>
+              <circle cx="158" cy="101" r="4" fill="#ff8a1f" opacity=".6"/>
+              <path d="M161 105 q 6 4 12 -1" stroke="#f6b40e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <g id="antennae">
+                <path d="M146 66 C 144 46, 150 34, 160 30" stroke="#1a1207" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <path d="M156 68 C 162 50, 174 42, 184 42" stroke="#1a1207" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <circle cx="160" cy="30" r="4.5" fill="#f6b40e"/><circle cx="184" cy="42" r="4.5" fill="#f6b40e"/>
+              </g>
+              <g id="wing-front">
+                <path d="M96 64 C 70 20, 30 10, 22 34 C 16 54, 52 66, 96 64Z" fill="url(#g-bee-wing)" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/>
+                <path d="M92 60 C 70 44, 46 34, 30 34" fill="none" stroke="#fff" stroke-opacity=".45"/>
+              </g>
+            </svg>
+          </div>
         </div>
-
-        <!-- Mobile Menu Container -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-b border-stone-200 px-6 pt-4 pb-6 space-y-3 mt-3 shadow-2xl">
-            <a href="#inicio" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Inicio</a>
-            <a href="#mascotas" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Mascotas</a>
-            <a href="#galeria" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Galería</a>
-            <a href="#testimonios" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Nos Recomiendan</a>
-            <a href="#productos" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Productos</a>
-            <a href="#noticias" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Noticias</a>
-            <a href="#contacto" class="mobile-link block py-2 font-semibold text-slate-700 hover:text-purple-800">Contacto</a>
-            <a href="#productos" class="mobile-link block text-center bg-purple-800 text-white font-bold py-3 rounded-xl shadow-lg mt-2">Comprar con Envío Gratis</a>
-        </div>
-    </header>
-
-    <!-- 2. HERO / INICIO -->
-    <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-28 hero-bg relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-                <!-- Text Column -->
-                <div class="space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 bg-amber-100/80 border border-amber-300/60 px-4 py-1.5 rounded-full text-[#6F3E1B] font-bold text-xs tracking-wide">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        e-SIM Multired Cobertura Nacional Colombia 🇨🇴
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
-                        Nunca pierdas de vista a quien <span class="text-gradient">más amas en Colombia</span>
-                    </h1>
-                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-                        Rastreo satelital GPS en tiempo real sin límite de distancia. Recibe alertas en tu celular si sale de casa y monitorea su actividad diaria con **GPETs**.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                        <a href="#productos" class="bg-[#6F3E1B] hover:bg-[#5c3214] text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-amber-900/20 transition-all transform hover:-translate-y-1 text-center">
-                            Ver Productos en COP
-                        </a>
-                        <a href="#mascotas" class="bg-white hover:bg-stone-50 text-purple-900 border border-purple-200 font-bold px-8 py-4 rounded-2xl shadow-sm transition-all text-center flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-shield-cat text-purple-700"></i> Compatibilidad
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Badges -->
-                    <div class="pt-6 border-t border-stone-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-600 font-semibold">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-truck-fast text-purple-700 text-base"></i> Envío Gratis a toda Colombia
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-battery-full text-emerald-600 text-base"></i> Batería hasta 10 días
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-droplet text-blue-600 text-base"></i> Resistencia IP67
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive App Simulation Card -->
-                <div class="relative flex justify-center">
-                    <div class="w-full max-w-md bg-white rounded-3xl p-6 shadow-2xl border border-purple-100/80 relative z-10">
-                        <!-- Top status -->
-                        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-                            <div class="flex items-center gap-3">
-                                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 rounded-2xl object-cover border-2 border-[#6F3E1B]" alt="Mascota GPETs">
-                                <div>
-                                    <h3 class="font-extrabold text-slate-800 text-sm">Apolo (Golden Retriever)</h3>
-                                    <p class="text-xs text-emerald-600 font-bold flex items-center gap-1">
-                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Zona Segura: El Poblado, Medellín
-                                    </p>
-                                </div>
-                            </div>
-                            <span class="bg-emerald-50 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold border border-emerald-200">GPS Activo</span>
-                        </div>
-
-                        <!-- Map Visual -->
-                        <div class="my-4 h-60 rounded-2xl bg-slate-200 relative overflow-hidden border border-slate-100 flex items-center justify-center">
-                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-80" alt="Mapa GPETs">
-                            <!-- Safe Zone Circle -->
-                            <div class="absolute w-44 h-44 rounded-full border-2 border-purple-500/60 bg-purple-500/10 animate-pulse"></div>
-                            <!-- Pet Pin Marker -->
-                            <div class="relative z-10 flex flex-col items-center">
-                                <div class="bg-[#6F3E1B] text-white p-3 rounded-full shadow-xl border-2 border-white transform transition hover:scale-110">
-                                    <i class="fa-solid fa-paw text-xl"></i>
-                                </div>
-                                <span class="bg-slate-900/90 text-white text-[11px] px-3 py-1 rounded-full font-bold shadow-md mt-1.5 backdrop-blur-sm">Rastreando ahora</span>
-                            </div>
-                        </div>
-
-                        <!-- Quick metrics -->
-                        <div class="grid grid-cols-3 gap-2.5 text-center text-xs">
-                            <div class="bg-purple-50/80 p-3 rounded-2xl border border-purple-100">
-                                <p class="text-slate-500 text-[10px] font-medium">Señal GPS</p>
-                                <p class="font-extrabold text-purple-900 text-xs">4G Multired</p>
-                            </div>
-                            <div class="bg-amber-50/80 p-3 rounded-2xl border border-amber-100">
-                                <p class="text-slate-500 text-[10px] font-medium">Batería GPETs</p>
-                                <p class="font-extrabold text-[#6F3E1B] text-xs">92% (8 Días)</p>
-                            </div>
-                            <div class="bg-emerald-50/80 p-3 rounded-2xl border border-emerald-100">
-                                <p class="text-slate-500 text-[10px] font-medium">Distancia Hoy</p>
-                                <p class="font-extrabold text-emerald-700 text-xs">3.8 Km</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. MASCOTAS -->
-    <section id="mascotas" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold text-purple-800 uppercase tracking-wider bg-purple-50 px-3.5 py-1.5 rounded-full border border-purple-100">Adaptación Perfecta</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Diseñado para la anatomía de tu mascota</h2>
-                <p class="mt-3 text-slate-600">GPETs se ajusta cómodamente a perros de todas las razas y gatos exploradores sin lastimar su cuello ni entorpecer sus actividades.</p>
-            </div>
-
-            <!-- Pet Filter Cards -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-stone-50 rounded-3xl p-8 border border-stone-200/80 hover:border-purple-300 transition-all duration-300 hover:shadow-xl group">
-                    <div class="w-14 h-14 bg-amber-100 text-[#6F3E1B] rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-dog"></i>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Perros Medianos y Grandes</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Soporta carreras, lodo, lluvia e imprevistos. Carcasa anti-impactos reforzada lista para paseos exigentes en fincas o senderos.</p>
-                    <ul class="space-y-2.5 text-xs text-slate-700 font-medium">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Ajuste seguro para collares de hasta 4 cm</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Historial de lugares visitados por 30 días</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Alerta de velocidad si va en vehículo</li>
-                    </ul>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-stone-50 rounded-3xl p-8 border border-purple-300 transition-all duration-300 hover:shadow-xl relative group bg-gradient-to-b from-purple-50/40 to-stone-50">
-                    <span class="absolute -top-3 right-6 bg-[#6F3E1B] text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow-md">Favorito en Colombia</span>
-                    <div class="w-14 h-14 bg-purple-100 text-purple-800 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-cat"></i>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Gatos y Razas Miniatura</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Apenas 24 gramos de peso. Ergonómico y curvo para no molestar el pecho del gato durante sus saltos o paseos en tejados.</p>
-                    <ul class="space-y-2.5 text-xs text-slate-700 font-medium">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Zumbador de sonido acústico para llamadas</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Luz LED nocturna activable desde la app</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Hebilla antipánico de liberación segura</li>
-                    </ul>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-stone-50 rounded-3xl p-8 border border-stone-200/80 hover:border-purple-300 transition-all duration-300 hover:shadow-xl group">
-                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-bone"></i>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Cachorros en Entrenamiento</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">Permite acostumbrar a los más pequeños al hábito de mantenerse cerca del hogar gracias a la delimitación de perímetros virtuales.</p>
-                    <ul class="space-y-2.5 text-xs text-slate-700 font-medium">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Notificación sonora si se aleja más de 20 metros</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Monitor de horas de descanso y juegos</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-purple-700"></i> Multiusuario: Toda la familia puede monitorear</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. GALERÍA -->
-    <section id="galeria" class="py-20 bg-slate-100/70">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold text-[#6F3E1B] uppercase tracking-wider bg-amber-100/80 px-3.5 py-1.5 rounded-full border border-amber-200">Comunidad GPETs</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Mascotas protegidas en toda Colombia</h2>
-                <p class="mt-3 text-slate-600">Fotografías reales de nuestros clientes disfrutando de parques, montañas y ciudades con total seguridad.</p>
-            </div>
-
-            <!-- Gallery Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Gallery Item 1 -->
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg h-80 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1000&auto=format&fit=crop&q=80', 'Bruno en Guatapé, Antioquia')">
-                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&auto=format&fit=crop&q=80" alt="Perro en Guatapé" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-90 sm:opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                        <span class="text-xs font-bold text-amber-300">Guatapé, Antioquia</span>
-                        <p class="text-white font-extrabold text-base">Bruno en caminata ecológica</p>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 2 -->
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg h-80 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1000&auto=format&fit=crop&q=80', 'Simba en Bogotá')">
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=80" alt="Gato en Bogotá" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-90 sm:opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                        <span class="text-xs font-bold text-purple-300">Bogotá D.C.</span>
-                        <p class="text-white font-extrabold text-base">Simba explorando los jardines</p>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 3 -->
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg h-80 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=1000&auto=format&fit=crop&q=80', 'Kira en la playa de Santa Marta')">
-                    <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=600&auto=format&fit=crop&q=80" alt="Perro en Santa Marta" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-90 sm:opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                        <span class="text-xs font-bold text-amber-300">Santa Marta</span>
-                        <p class="text-white font-extrabold text-base">Kira en la playa con IP67</p>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 4 -->
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg h-80 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1000&
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-90 sm:opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                        <span class="text-xs font-bold text-purple-300">Cali, Valle</span>
-                        <p class="text-white font-extrabold text-base">Mateo descansando tras correr</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. NOS RECOMIENDAN -->
-    <section id="testimonios" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold text-purple-800 uppercase tracking-wider bg-purple-50 px-3.5 py-1.5 rounded-full border border-purple-100">Testimonios Reales</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Familias tranquilas en Colombia</h2>
-                <p class="mt-3 text-slate-600">Calificación promedio de 4.9/5 basada en más de 8,400 dispositivos activos en el país.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-stone-50 border border-stone-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-                    <div>
-                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 italic text-sm leading-relaxed mb-6">"Vivimos en una finca en Llanogrande y mi perro se salió por la reja. La app de GPETs me mostró la ubicación exacta a 1.5 km en menos de 3 minutos. Valió cada peso."</p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover border-2 border-purple-700" alt="Cliente Medellín">
-                        <div>
-                            <p class="font-extrabold text-slate-900 text-sm">Carolina Villegas</p>
-                            <p class="text-xs text-purple-700 font-semibold">Medellín, Antioquia</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-stone-50 border border-stone-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-                    <div>
-                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 italic text-sm leading-relaxed mb-6">"Compré el GPETs Nano para mi gata. En Bogotá hay muchos techos y me daba pánico perderla. El peso es mínimo y el zumbador funciona súper bien."</p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover border-2 border-[#6F3E1B]" alt="Cliente Bogotá">
-                        <div>
-                            <p class="font-extrabold text-slate-900 text-sm">Andrés Camargo</p>
-                            <p class="text-xs text-[#6F3E1B] font-semibold">Bogotá D.C.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="bg-stone-50 border border-stone-200/80 rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-                    <div>
-                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-slate-700 italic text-sm leading-relaxed mb-6">"El pedido llegó al día siguiente a Bucaramanga. La configuración fue sumamente fácil y la batería dura más de una semana sin problemas."</p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover border-2 border-purple-700" alt="Cliente Bucaramanga">
-                        <div>
-                            <p class="font-extrabold text-slate-900 text-sm">Lina María Suárez</p>
-                            <p class="text-xs text-purple-700 font-semibold">Bucaramanga, Santander</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. PRODUCTOS EN PESOS COLOMBIANOS (COP) -->
-    <section id="productos" class="py-20 bg-slate-100/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider bg-emerald-100 px-3.5 py-1.5 rounded-full border border-emerald-200">Precios en Pesos Colombianos</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Planes y Localizadores GPETs</h2>
-                <p class="mt-3 text-slate-600">Sin contratos forzosos. Incluye e-SIM configurada para Colombia con envío totalmente gratis.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Producto 1: GPETs Light -->
-                <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                    <div class="p-8">
-                        <span class="text-[11px] font-extrabold text-purple-800 bg-purple-50 px-3 py-1 rounded-full uppercase tracking-wider">Edición Felinos / Pequeños</span>
-                        <h3 class="text-2xl font-black text-slate-900 mt-4">GPETs Nano</h3>
-                        <p class="text-xs text-slate-500 mt-1">Diseño ultraliviano para gatos y cachorros</p>
-                        
-                        <div class="my-6">
-                            <span class="text-3xl sm:text-4xl font-black text-slate-900">$149.900</span>
-                            <span class="text-xs font-bold text-slate-500"> COP</span>
-                        </div>
-
-                        <ul class="space-y-3 text-xs text-slate-700 font-medium mb-6">
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-[#6F3E1B] fa-check text-[#6F3E1B]"></i> e-SIM Multired Claro/Movistar/Tigo</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-[#6F3E1B] fa-check text-[#6F3E1B]"></i> Batería: Hasta 5 días de uso continuo</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-[#6F3E1B] fa-check text-[#6F3E1B]"></i> Peso pluma: 24 gramos</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-[#6F3E1B] fa-check text-[#6F3E1B]"></i> Resistencia IP67 a salpicaduras</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-stone-100">
-                        <button onclick="addToCart('GPETs Nano', '$149.900 COP')" class="w-full bg-[#6F3E1B] hover:bg-[#5c3214] text-white font-bold py-3.5 rounded-xl transition shadow-md text-sm">
-                            Comprar por $149.900 COP
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Producto 2: GPETs Pro+ (Destacado) -->
-                <div class="bg-white border-2 border-purple-700 rounded-3xl overflow-hidden shadow-2xl transition duration-300 flex flex-col justify-between relative transform lg:-translate-y-3">
-                    <div class="bg-purple-800 text-white text-center text-xs font-black py-2 uppercase tracking-widest">
-                        ⭐ El más vendido en Colombia
-                    </div>
-                    <div class="p-8">
-                        <span class="text-[11px] font-extrabold text-[#6F3E1B] bg-amber-100/80 px-3 py-1 rounded-full uppercase tracking-wider">Recomendado Todoterreno</span>
-                        <h3 class="text-2xl font-black text-slate-900 mt-4">GPETs Pro 4G</h3>
-                        <p class="text-xs text-slate-500 mt-1">Para perros medianos, grandes y fincas</p>
-
-                        <div class="my-6">
-                            <span class="text-3xl sm:text-4xl font-black text-purple-900">$219.900</span>
-                            <span class="text-xs font-bold text-slate-500"> COP</span>
-                        </div>
-
-                        <ul class="space-y-3 text-xs text-slate-700 font-medium mb-6">
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-700"></i> Cobertura Satelital GPS + LTE 4G</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-700"></i> Batería de Larga Duración: 10 Días</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-700"></i> 100% Sumergible en agua (IP68)</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-700"></i> Luz nocturna LED & Zumbador acústico</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-purple-50/60 border-t border-purple-100">
-                        <button onclick="addToCart('GPETs Pro 4G', '$219.900 COP')" class="w-full bg-gradient-to-r from-purple-800 to-indigo-900 hover:opacity-95 text-white font-bold py-4 rounded-xl transition shadow-lg text-sm">
-                            Pedir Ahora con Envío Gratis
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Producto 3: GPETs Combo Pack -->
-                <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                    <div class="p-8">
-                        <span class="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-wider">Ahorro Familiar</span>
-                        <h3 class="text-2xl font-black text-slate-900 mt-4">Combo Dúo GPETs</h3>
-                        <p class="text-xs text-slate-500 mt-1">Pack de 2 localizadores con descuento</p>
-
-                        <div class="my-6">
-                            <span class="text-3xl sm:text-4xl font-black text-slate-900">$349.900</span>
-                            <span class="text-xs font-bold text-slate-500"> COP</span>
-                        </div>
-
-                        <ul class="space-y-3 text-xs text-slate-700 font-medium mb-6">
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-700"></i> Incluye 2 dispositivos GPETs a elección</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-700"></i> Monitoreo unificado en la misma App</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-700"></i> Accesorios de sujeción para collares incluidos</li>
-                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-700"></i> Garantía extendida de 2 años en Colombia</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-slate-50 border-t border-stone-100">
-                        <button onclick="addToCart('Combo Dúo GPETs', '$349.900 COP')" class="w-full bg-[#6F3E1B] hover:bg-[#5c3214] text-white font-bold py-3.5 rounded-xl transition shadow-md text-sm">
-                            Aprovechar Combo $349.900 COP
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. CONTENEDORES DE NOTICIAS (EXACTAMENTE 6 TARJETAS) -->
-    <section id="noticias" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold text-purple-800 uppercase tracking-wider bg-purple-50 px-3.5 py-1.5 rounded-full border border-purple-100">Blog & Consejos Pet-Tech</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Noticias e información para el cuidado animal</h2>
-                <p class="mt-3 text-slate-600">Aprende sobre la prevención de pérdidas, consejos de adiestramiento y tecnología para tus peludos.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Tarjeta Noticia 1 -->
-                <article class="bg-stone-50 rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&auto=format&fit=crop&q=80" alt="Noticia 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-purple-800 text-white text-[10px] font-bold px-3 py-1 rounded-full">Tecnología GPS</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-xs text-slate-400 font-medium mb-1">12 de Octubre, 2026</p>
-                        <h3 class="font-extrabold text-slate-900 text-base mb-2 line-clamp-2">¿Cómo funcionan las zonas seguras o Geocercas en Colombia?</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 mb-4">Aprende a configurar un perímetro virtual alrededor de tu casa en la App GPETs para recibir alertas instantáneas si tu perro cruza la puerta.</p>
-                        <button onclick="readNews(1, '¿Cómo funcionan las zonas seguras o Geocercas en Colombia?')" class="text-purple-800 hover:text-purple-950 font-extrabold text-xs inline-flex items-center gap-1.5">
-                            Leer noticia completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Tarjeta Noticia 2 -->
-                <article class="bg-stone-50 rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop&q=80" alt="Noticia 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-[#6F3E1B] text-white text-[10px] font-bold px-3 py-1 rounded-full">Comportamiento Felino</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-xs text-slate-400 font-medium mb-1">08 de Octubre, 2026</p>
-                        <h3 class="font-extrabold text-slate-900 text-base mb-2 line-clamp-2">Los trayectos secretos de los gatos durante la noche</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 mb-4">Estudios con localizadores GPETs muestran que un gato doméstico puede recorrer más de 2 kilómetros en una sola noche por los tejados vecinos.</p>
-                        <button onclick="readNews(2, 'Los trayectos secretos de los gatos durante la noche')" class="text-purple-800 hover:text-purple-950 font-extrabold text-xs inline-flex items-center gap-1.5">
-                            Leer noticia completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Tarjeta Noticia 3 -->
-                <article class="bg-stone-50 rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=600&auto=format&fit=crop&q=80" alt="Noticia 3" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-emerald-800 text-white text-[10px] font-bold px-3 py-1 rounded-full">Viajes y Turismo</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-xs text-slate-400 font-medium mb-1">28 de Septiembre, 2026</p>
-                        <h3 class="font-extrabold text-slate-900 text-base mb-2 line-clamp-2">Viajar con mascotas por carretera en Colombia de forma segura</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 mb-4">Recomendaciones indispensables para trayectos largos hacia la costa o el eje cafetero asegurando que tu perro no se extravíe en las paradas.</p>
-                        <button onclick="readNews(3, 'Viajar con mascotas por carretera en Colombia de forma segura')" class="text-purple-800 hover:text-purple-950 font-extrabold text-xs inline-flex items-center gap-1.5">
-                            Leer noticia completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Tarjeta Noticia 4 -->
-                <article class="bg-stone-50 rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=600&auto=format&fit=crop&q=80" alt="Noticia 4" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-purple-800 text-white text-[10px] font-bold px-3 py-1 rounded-full">Salud Animal</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-xs text-slate-400 font-medium mb-1">15 de Septiembre, 2026</p>
-                        <h3 class="font-extrabold text-slate-900 text-base mb-2 line-clamp-2">¿Cuántos pasos debe dar tu perro según su raza diariamente?</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 mb-4">Descubre la importancia de combatir el sedentarismo canino midiendo el nivel de actividad física con los sensores integrados de GPETs.</p>
-                        <button onclick="readNews(4, '¿Cuántos pasos debe dar tu perro según su raza diariamente?')" class="text-purple-800 hover:text-purple-950 font-extrabold text-xs inline-flex items-center gap-1.5">
-                            Leer noticia completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Tarjeta Noticia 5 -->
-                <article class="bg-stone-50 rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80" alt="Noticia 5" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-[#6F3E1B] text-white text-[10px] font-bold px-3 py-1 rounded-full">Adiestramiento</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-xs text-slate-400 font-medium mb-1">02 de Septiembre, 2026</p>
-                        <h3 class="font-extrabold text-slate-900 text-base mb-2 line-clamp-2">Entrenamiento de retorno mediante señales acústicas</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 mb-4">Paso a paso para asociar el zumbido de tu dispositivo GPETs con bocadillos o premios para que regrese de inmediato a tu lado.</p>
-                        <button onclick="readNews(5, 'Entrenamiento de retorno mediante señales acústicas')" class="text-purple-800 hover:text-purple-950 font-extrabold text-xs inline-flex items-center gap-1.5">
-                            Leer noticia completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Tarjeta Noticia 6 -->
-                <article class="bg-stone-50 rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md transition group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&auto=format&fit=crop&q=80" alt="Noticia 6" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-emerald-800 text-white text-[10px] font-bold px-3 py-1 rounded-full">Actualización App</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-xs text-slate-400 font-medium mb-1">20 de Agosto, 2026</p>
-                        <h3 class="font-extrabold text-slate-900 text-base mb-2 line-clamp-2">Lanzamiento de GPETs App v3.5 con mapas vectoriales 3D</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed line-clamp-3 mb-4">La nueva versión de la aplicación incluye vista satelital mejorada para zonas rurales y sincronización directa con Apple Watch y Android Wear.</p>
-                        <button onclick="readNews(6, 'Lanzamiento de GPETs App v3.5 con mapas vectoriales 3D')" class="text-purple-800 hover:text-purple-950 font-extrabold text-xs inline-flex items-center gap-1.5">
-                            Leer noticia completa <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. FOOTER Y FORMULARIO DE CONTACTO EN COLOR PÚRPURA -->
-    <footer id="contacto" class="bg-gradient-to-b from-[#4C1D95] via-[#3B0764] to-[#2e0252] text-white pt-20 pb-12 relative overflow-hidden">
-        <!-- Glow effect -->
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Contact Box -->
-            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-purple-400/30 mb-16 shadow-2xl">
-                <div class="grid lg:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <span class="text-amber-300 font-extrabold uppercase tracking-widest text-xs">Atención al Cliente Colombia</span>
-                        <h2 class="text-3xl sm:text-4xl font-black text-white mt-2 mb-4">¿Preguntas sobre GPETs?</h2>
-                        <p class="text-purple-100 text-sm leading-relaxed mb-8">
-                            Escríbenos y un asesor especializado resolverá tus dudas sobre cobertura, envíos en Colombia o compatibilidad con tu mascota.
-                        </p>
-
-                        <div class="space-y-4 text-xs sm:text-sm text-purple-100 font-medium">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-2xl bg-purple-900/80 border border-purple-400/30 flex items-center justify-center text-amber-300">
-                                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                                </div>
-                                <span>WhatsApp: +57 (300) 987-6543</span>
-                            </div>
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-2xl bg-purple-900/80 border border-purple-400/30 flex items-center justify-center text-amber-300">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <span>contacto@gpets.com.co</span>
-                            </div>
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-2xl bg-purple-900/80 border border-purple-400/30 flex items-center justify-center text-amber-300">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <span>Oficinas: Medellín y Bogotá, Colombia</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <form id="contactForm" onsubmit="handleContact(event)" class="space-y-4 bg-purple-950/60 p-6 sm:p-8 rounded-2xl border border-purple-400/20">
-                        <div>
-                            <label class="block text-xs font-bold text-purple-200 mb-1">Nombre Completo</label>
-                            <input type="text" id="formName" required placeholder="Ej. Marcela Gómez" class="w-full bg-purple-900/40 border border-purple-400/30 rounded-xl px-4 py-3 text-white placeholder-purple-300/40 focus:outline-none focus:border-amber-300 text-sm">
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                label class="block text-xs font-bold text-purple-200 mb-1">Correo Electrónico</label>
-                                <input type="email" id="formEmail" required placeholder="tu@correo.com" class="w-full bg-purple-900/40 border border-purple-400/30 rounded-xl px-4 py-3 text-white placeholder-purple-300/40 focus:outline-none focus:border-amber-300 text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-purple-200 mb-1">Ciudad en Colombia</label>
-                                <input type="text" id="formCity" required placeholder="Ej. Cali, Medellín, etc." class="w-full bg-purple-900/40 border border-purple-400/30 rounded-xl px-4 py-3 text-white placeholder-purple-300/40 focus:outline-none focus:border-amber-300 text-sm">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-purple-200 mb-1">Mensaje o Inquietud</label>
-                            <textarea id="formMessage" rows="3" required placeholder="¿Para qué mascota buscas el localizador?" class="w-full bg-purple-900/40 border border-purple-400/30 rounded-xl px-4 py-3 text-white placeholder-purple-300/40 focus:outline-none focus:border-amber-300 text-sm"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-black py-3.5 rounded-xl transition shadow-xl text-sm uppercase tracking-wider">
-                            Enviar Consulta a GPETs
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Footer Columns -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-purple-800/60 text-xs text-purple-200">
-                <div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg class="w-7 h-7" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="70" cy="55" r="18" fill="#FBBF24"/>
-                            <circle cx="100" cy="45" r="18" fill="#FBBF24"/>
-                            <circle cx="130" cy="55" r="18" fill="#FBBF24"/>
-                            <path d="M100 85 C80 85, 65 100, 65 120 C65 145, 100 175, 100 175 C100 175, 135 145, 135 120 C135 100, 120 85, 100 85 Z" stroke="#FBBF24" stroke-width="12" fill="none"/>
-                        </svg>
-                        <span class="text-xl font-extrabold text-white">GPETs</span>
-                    </div>
-                    <p class="leading-relaxed">Tecnología de localización satelital GPS diseñada exclusivamente para el cuidado de mascotas en el territorio colombiano.</p>
-                </div>
-
-                <div>
-                    <h4 class="font-extrabold text-white uppercase mb-4 tracking-wider">Navegación</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#inicio" class="hover:text-amber-300 transition">Inicio</a></li>
-                        <li><a href="#mascotas" class="hover:text-amber-300 transition">Mascotas Compatibles</a></li>
-                        <li><a href="#galeria" class="hover:text-amber-300 transition">Galería Fotográfica</a></li>
-                        <li><a href="#productos" class="hover:text-amber-300 transition">Productos en COP</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-extrabold text-white uppercase mb-4 tracking-wider">Garantía y Legal</h4>
-                    <ul class="space-y-2">
-                        <li><a href="javascript:void(0)" onclick="openModal('Términos y Condiciones', 'Todos los dispositivos GPETs cuentan con 1 año de garantía legal en Colombia por defectos de fábrica.')" class="hover:text-amber-300 transition">Términos del Servicio</a></li>
-                        <li><a href="javascript:void(0)" onclick="openModal('Políticas de Envío', 'Envíos a nivel nacional realizados con Servientrega, Interrapidísimo o Coordinadora con tiempo estimado de 1 a 3 días hábiles.')" class="hover:text-amber-300 transition">Políticas de Envío</a></li>
-                        <li><a href="javascript:void(0)" onclick="openModal('Privacidad de Datos', 'Tus datos y la ubicación GPS de tu mascota están protegidos con encriptación de extremo a extremo.')" class="hover:text-amber-300 transition">Privacidad de Ubicación</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-extrabold text-white uppercase mb-4 tracking-wider">Síguenos</h4>
-                    <div class="flex space-x-3">
-                        <a href="javascript:void(0)" onclick="openModal('Instagram', 'Síguenos en @GPETsColombia')" class="w-9 h-9 rounded-xl bg-purple-900/80 border border-purple-400/30 flex items-center justify-center text-amber-300 hover:bg-amber-400 hover:text-slate-950 transition"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="javascript:void(0)" onclick="openModal('Facebook', 'Encuéntranos como GPETs Localizadores')" class="w-9 h-9 rounded-xl bg-purple-900/80 border border-purple-400/30 flex items-center justify-center text-amber-300 hover:bg-amber-400 hover:text-slate-950 transition"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="javascript:void(0)" onclick="openModal('TikTok', 'Videos de perritos y gatitos usando GPETs en @GPETs.co')" class="w-9 h-9 rounded-xl bg-purple-900/80 border border-purple-400/30 flex items-center justify-center text-amber-300 hover:bg-amber-400 hover:text-slate-950 transition"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-8 text-center text-xs text-purple-300 font-medium">
-                <p>&copy; 2026 GPETs Colombia - Marca Registrada. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Custom Interactive Modal -->
-    <div id="appModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl text-center relative border border-purple-100 transform transition-all">
-            <div id="modalIcon" class="w-16 h-16 bg-purple-100 text-purple-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h3 id="modalTitle" class="text-xl font-extrabold text-slate-900 mb-2">Notificación</h3>
-            <p id="modalDescription" class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">Detalle del mensaje aquí.</p>
-            <button onclick="closeModal()" class="w-full bg-purple-800 hover:bg-purple-900 text-white font-bold py-3.5 rounded-xl transition shadow-md text-sm">
-                Aceptar
-            </button>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Lightbox Modal para Galería -->
-    <div id="lightboxModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex flex-col items-center justify-center hidden p-4" onclick="closeLightbox()">
-        <div class="relative max-w-4xl w-full flex flex-col items-center">
-            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white text-3xl hover:text-amber-300">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <img id="lightboxImage" src="" alt="Ampliación" class="max-h-[75vh] rounded-2xl shadow-2xl object-contain border border-purple-500/30">
-            <p id="lightboxCaption" class="text-white text-sm font-bold mt-4 bg-slate-900/80 px-4 py-2 rounded-full border border-slate-700"></p>
+  <!-- ============ 01 · NAV ============ -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 border-b border-cream/10 bg-ink/60 backdrop-blur-xl">
+    <nav class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+      <a href="#hero" class="flex items-center gap-2 font-display text-xl font-semibold tracking-tight">
+        <svg width="22" height="24" viewBox="0 0 22 24" aria-hidden="true"><path d="M11 1l9.5 5.5v11L11 23 1.5 17.5v-11z" fill="#f6b40e"/></svg>
+        Hive
+      </a>
+      <ul class="hidden items-center gap-8 text-sm text-cream/70 md:flex">
+        <li><a href="#statement" class="transition hover:text-cream">Story</a></li>
+        <li><a href="#product" class="transition hover:text-cream">No.01</a></li>
+        <li><a href="#gallery" class="transition hover:text-cream">Flavors</a></li>
+        <li><a href="#process" class="transition hover:text-cream">Process</a></li>
+        <li><a href="#reviews" class="transition hover:text-cream">Reviews</a></li>
+      </ul>
+      <a href="#cta" class="rounded-full bg-honey px-4 py-1.5 text-sm font-semibold text-ink transition hover:bg-amber">Pre-order</a>
+    </nav>
+    <div id="progress" class="h-[2px] bg-gradient-to-r from-honey to-amber" style="transform:scaleX(0)"></div>
+  </header>
+
+  <main>
+    <!-- ============ 02 · HERO ============ -->
+    <section id="hero" class="flex h-screen items-end overflow-hidden md:items-center"
+      data-bee='[{"at":0,"x":0.74,"y":0.5,"s":1.35,"xm":0.66,"ym":0.24},{"at":1,"x":0.6,"y":0.2,"s":1,"xm":0.8,"ym":0.14}]'>
+      <div class="honeycomb absolute inset-0"></div>
+      <div class="hero-glow glow left-[55%] top-1/2 h-[90vmin] w-[90vmin] -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="hero-inner relative mx-auto w-full max-w-7xl px-6 pb-20 md:pb-0">
+        <p class="hero-eyebrow mb-6 text-xs font-semibold uppercase tracking-[.3em] text-honey">Hive No.01 · Raw Wildflower Honey</p>
+        <h1 class="font-display text-[clamp(3.2rem,10vw,9rem)] font-semibold leading-[.92] tracking-tight" aria-label="Pure gold. Made by bees.">
+          <span class="line"><span class="split">Pure gold.</span></span>
+          <span class="line"><span class="split italic text-honey">Made by bees.</span></span>
+        </h1>
+        <p class="hero-sub mt-8 max-w-md text-lg text-cream/70">Raw, cold-extracted, single-origin honey. Nothing added, nothing taken away. Just the summer, in a jar.</p>
+        <div class="hero-cta mt-10 flex flex-wrap gap-4">
+          <a href="#cta" class="rounded-full bg-honey px-7 py-3.5 font-semibold text-ink transition hover:bg-amber">Reserve a jar</a>
+          <a href="#statement" class="rounded-full border border-cream/20 px-7 py-3.5 font-semibold transition hover:border-cream/50">Watch the story ↓</a>
         </div>
+      </div>
+      <div class="scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[11px] uppercase tracking-[.3em] text-cream/50 md:flex">
+        Scroll
+        <span class="flex h-9 w-5 justify-center rounded-full border border-cream/30 pt-1.5"><span class="cue-dot h-1.5 w-1.5 rounded-full bg-honey"></span></span>
+      </div>
+    </section>
+
+    <!-- ============ 03 · STATEMENT (pinned) ============ -->
+    <section id="statement" class="pin flex items-center justify-center px-6"
+      data-bee='[{"at":0,"x":0.86,"y":0.2,"s":0.75},{"at":1,"x":0.14,"y":0.82,"s":0.75}]'>
+      <div class="max-w-5xl text-center">
+        <p id="statement-text" class="font-display text-[clamp(2rem,5.2vw,4.6rem)] font-medium leading-[1.12] tracking-tight">Every jar holds the work of <em class="italic text-honey">sixty thousand bees</em>, two million flowers, and one quiet promise: <em class="italic text-honey">nothing added, nothing taken away.</em></p>
+        <p class="statement-meta mt-10 text-sm uppercase tracking-[.3em] text-cream/50">Harvested once a year · Never heated</p>
+      </div>
+    </section>
+
+    <!-- ============ 04 · PRODUCT REVEAL (pinned) ============ -->
+    <section id="product" class="pin"
+      data-bee='[{"at":0,"x":0.82,"y":0.24,"s":0.85,"xm":0.85,"ym":0.18},{"at":0.45,"x":0.22,"y":0.42,"s":0.9,"xm":0.15},{"at":0.78,"el":"#jar-perch","oy":-34,"s":0.6},{"at":1,"el":"#jar-perch","oy":-34,"s":0.6}]'>
+      <div class="product-copy absolute inset-x-0 top-[13vh] z-10 px-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-[.3em] text-honey">Introducing</p>
+        <h2 class="mt-3 font-display text-[clamp(2.6rem,7vw,6rem)] font-semibold leading-none tracking-tight">Hive <span class="italic text-honey">No.01</span></h2>
+        <p class="mx-auto mt-4 max-w-md text-cream/60">Wildflower honey from a single valley, jarred within a day of the harvest.</p>
+      </div>
+      <div class="absolute inset-x-0 bottom-[5vh] flex justify-center">
+        <div class="glow left-1/2 top-1/2 h-[min(80vw,640px)] w-[min(80vw,640px)] -translate-x-1/2 -translate-y-1/2"></div>
+        <div id="jar-wrap" class="relative aspect-[3/4]" style="width:min(300px,58vw,40vh)">
+          <div id="jar-perch" class="absolute left-1/2 top-[3%] h-px w-px"></div>
+          <svg viewBox="0 0 240 320" class="h-full w-full" role="img" aria-label="A jar of Hive No.01 honey">
+            <g id="jar-lid">
+              <rect x="52" y="10" width="136" height="44" rx="10" fill="url(#g-lid)"/>
+              <g stroke="#000" stroke-opacity=".22" stroke-width="2">
+                <line x1="66" y1="16" x2="66" y2="48"/><line x1="80" y1="16" x2="80" y2="48"/><line x1="94" y1="16" x2="94" y2="48"/><line x1="108" y1="16" x2="108" y2="48"/><line x1="122" y1="16" x2="122" y2="48"/><line x1="136" y1="16" x2="136" y2="48"/><line x1="150" y1="16" x2="150" y2="48"/><line x1="164" y1="16" x2="164" y2="48"/><line x1="178" y1="16" x2="178" y2="48"/>
+              </g>
+            </g>
+            <rect x="62" y="52" width="116" height="16" rx="4" fill="#2a1c08"/>
+            <path d="M26 132 q 47 -14 94 0 t 94 0 v144 a30 30 0 0 1 -30 30 h-128 a30 30 0 0 1 -30 -30z" fill="url(#g-honey)"/>
+            <path d="M48 70 h144 a28 28 0 0 1 28 28 v178 a34 34 0 0 1 -34 34 h-132 a34 34 0 0 1 -34 -34 v-178 a28 28 0 0 1 28 -28z" fill="url(#g-glass)" stroke="#fff3d6" stroke-opacity=".35" stroke-width="2"/>
+            <rect x="62" y="172" width="116" height="84" rx="8" fill="#fff3d6"/>
+            <text x="120" y="212" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="700" fill="#0b0906">HIVE</text>
+            <text x="120" y="236" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="1.2" fill="#7a4200">No.01 · WILDFLOWER</text>
+            <rect x="34" y="92" width="8" height="186" rx="4" fill="#fff" opacity=".22"/>
+          </svg>
+          <div class="callout absolute right-[108%] top-[22%] hidden whitespace-nowrap rounded-full border border-cream/15 bg-ink/70 px-4 py-2 text-sm backdrop-blur md:block"><span class="mr-2 inline-block h-2 w-2 rounded-full bg-honey"></span>Raw, never heated</div>
+          <div class="callout absolute left-[108%] top-[38%] hidden whitespace-nowrap rounded-full border border-cream/15 bg-ink/70 px-4 py-2 text-sm backdrop-blur md:block"><span class="mr-2 inline-block h-2 w-2 rounded-full bg-honey"></span>Cold-extracted at 22°C</div>
+          <div class="callout absolute right-[108%] top-[62%] hidden whitespace-nowrap rounded-full border border-cream/15 bg-ink/70 px-4 py-2 text-sm backdrop-blur md:block"><span class="mr-2 inline-block h-2 w-2 rounded-full bg-honey"></span>Single-origin valley</div>
+          <div class="callout absolute left-[108%] top-[78%] hidden whitespace-nowrap rounded-full border border-cream/15 bg-ink/70 px-4 py-2 text-sm backdrop-blur md:block"><span class="mr-2 inline-block h-2 w-2 rounded-full bg-honey"></span>Endlessly recyclable glass</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · FEATURES ============ -->
+    <section id="features" class="px-6 py-32 md:py-44"
+      data-bee='[{"at":0,"x":0.88,"y":0.18,"s":0.8},{"at":0.5,"x":0.5,"y":0.12,"s":0.7,"xm":0.85},{"at":1,"x":0.1,"y":0.85,"s":0.8}]'>
+      <div class="mx-auto max-w-7xl">
+        <p class="text-xs font-semibold uppercase tracking-[.3em] text-honey">Why it tastes different</p>
+        <h2 class="mt-4 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[1.05] tracking-tight">Three decisions we refuse to compromise on.</h2>
+        <div class="mt-16 grid gap-6 md:grid-cols-3">
+          <article class="feature-card rounded-3xl border border-cream/10 bg-ink-2 p-8">
+            <svg class="h-10 w-10 text-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C12 6 14 4 16 4s2 3-1 6M14.5 12c3.5 0 5.5 2 5.5 4s-3 2-6-1M12 14.5c0 3.5-2 5.5-4 5.5s-2-3 1-6M9.5 12C6 12 4 10 4 8s3-2 6 1"/></svg>
+            <h3 class="mt-6 text-xl font-semibold">Raw &amp; unfiltered</h3>
+            <p class="mt-3 text-cream/60">Pollen, enzymes and the faint perfume of the meadow stay in. Heat and fine filters stay out.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-cream/10 bg-ink-2 p-8">
+            <svg class="h-10 w-10 text-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <h3 class="mt-6 text-xl font-semibold">Single-origin</h3>
+            <p class="mt-3 text-cream/60">Every jar traces back to one valley, one apiary and one harvest week. Scan the lid to see the exact field.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-cream/10 bg-ink-2 p-8">
+            <svg class="h-10 w-10 text-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19c3-4 6-7 10-9"/></svg>
+            <h3 class="mt-6 text-xl font-semibold">Hives first</h3>
+            <p class="mt-3 text-cream/60">We only take the surplus. The colony always keeps enough honey to winter strong.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · HORIZONTAL GALLERY (pinned) ============ -->
+    <section id="gallery" class="pin flex flex-col"
+      data-bee='[{"at":0,"x":0.12,"y":0.84,"s":0.75},{"at":0.5,"x":0.5,"y":0.16,"s":0.7,"xm":0.85,"ym":0.12},{"at":1,"x":0.88,"y":0.84,"s":0.75}]'>
+      <div class="px-[8vw] pt-24 md:pt-28">
+        <p class="text-xs font-semibold uppercase tracking-[.3em] text-honey">The collection</p>
+        <h2 class="mt-3 font-display text-[clamp(2rem,4.5vw,3.8rem)] font-semibold leading-none tracking-tight">Five flowers. Five golds.</h2>
+      </div>
+      <div class="flex flex-1 items-center">
+        <div class="gallery-track">
+          <article class="panel relative flex h-[56vh] w-[78vw] flex-col justify-between overflow-hidden rounded-[2rem] border border-cream/10 p-8 md:w-[40vw] md:p-12" style="--c:#f6b40e;background:linear-gradient(150deg,rgba(246,180,14,.28),#16110a 65%)">
+            <span class="text-sm text-cream/60">01 — Wildflower</span>
+            <svg class="drop absolute right-8 top-8 w-[28%]" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C50 4 92 58 92 84a42 42 0 0 1-84 0C8 58 50 4 50 4Z" style="fill:var(--c)"/><ellipse cx="34" cy="80" rx="8" ry="16" fill="#fff" opacity=".3"/></svg>
+            <div><h3 class="font-display text-4xl font-semibold md:text-6xl">Wildflower</h3><p class="mt-3 max-w-xs text-cream/60">Bright, floral, a little citrus. The everyday gold.</p></div>
+          </article>
+          <article class="panel relative flex h-[56vh] w-[78vw] flex-col justify-between overflow-hidden rounded-[2rem] border border-cream/10 p-8 md:w-[40vw] md:p-12" style="--c:#f7dc7c;background:linear-gradient(150deg,rgba(247,220,124,.24),#16110a 65%)">
+            <span class="text-sm text-cream/60">02 — Acacia</span>
+            <svg class="drop absolute right-8 top-8 w-[28%]" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C50 4 92 58 92 84a42 42 0 0 1-84 0C8 58 50 4 50 4Z" style="fill:var(--c)"/><ellipse cx="34" cy="80" rx="8" ry="16" fill="#fff" opacity=".3"/></svg>
+            <div><h3 class="font-display text-4xl font-semibold md:text-6xl">Acacia</h3><p class="mt-3 max-w-xs text-cream/60">Pale, clean and slow to crystallize. Vanilla on the finish.</p></div>
+          </article>
+          <article class="panel relative flex h-[56vh] w-[78vw] flex-col justify-between overflow-hidden rounded-[2rem] border border-cream/10 p-8 md:w-[40vw] md:p-12" style="--c:#b8650f;background:linear-gradient(150deg,rgba(184,101,15,.32),#16110a 65%)">
+            <span class="text-sm text-cream/60">03 — Manuka</span>
+            <svg class="drop absolute right-8 top-8 w-[28%]" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C50 4 92 58 92 84a42 42 0 0 1-84 0C8 58 50 4 50 4Z" style="fill:var(--c)"/><ellipse cx="34" cy="80" rx="8" ry="16" fill="#fff" opacity=".3"/></svg>
+            <div><h3 class="font-display text-4xl font-semibold md:text-6xl">Manuka</h3><p class="mt-3 max-w-xs text-cream/60">Dense, earthy, medicinal. A spoonful is a ritual.</p></div>
+          </article>
+          <article class="panel relative flex h-[56vh] w-[78vw] flex-col justify-between overflow-hidden rounded-[2rem] border border-cream/10 p-8 md:w-[40vw] md:p-12" style="--c:#c4aef0;background:linear-gradient(150deg,rgba(196,174,240,.22),#16110a 65%)">
+            <span class="text-sm text-cream/60">04 — Lavender</span>
+            <svg class="drop absolute right-8 top-8 w-[28%]" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C50 4 92 58 92 84a42 42 0 0 1-84 0C8 58 50 4 50 4Z" style="fill:var(--c)"/><ellipse cx="34" cy="80" rx="8" ry="16" fill="#fff" opacity=".3"/></svg>
+            <div><h3 class="font-display text-4xl font-semibold md:text-6xl">Lavender</h3><p class="mt-3 max-w-xs text-cream/60">Herbal and soft, from a single Provençal hillside.</p></div>
+          </article>
+          <article class="panel relative flex h-[56vh] w-[78vw] flex-col justify-between overflow-hidden rounded-[2rem] border border-cream/10 p-8 md:w-[40vw] md:p-12" style="--c:#6a3410;background:linear-gradient(150deg,rgba(140,70,20,.38),#16110a 65%)">
+            <span class="text-sm text-cream/60">05 — Buckwheat</span>
+            <svg class="drop absolute right-8 top-8 w-[28%]" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C50 4 92 58 92 84a42 42 0 0 1-84 0C8 58 50 4 50 4Z" style="fill:var(--c)"/><ellipse cx="34" cy="80" rx="8" ry="16" fill="#fff" opacity=".3"/></svg>
+            <div><h3 class="font-display text-4xl font-semibold md:text-6xl">Buckwheat</h3><p class="mt-3 max-w-xs text-cream/60">Dark as molasses. Malty, bold, unforgettable.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · STATS ============ -->
+    <section id="stats" class="px-6 py-32 md:py-44"
+      data-bee='[{"at":0,"x":0.88,"y":0.24,"s":0.8},{"at":0.5,"x":0.1,"y":0.5,"s":0.8},{"at":1,"x":0.85,"y":0.78,"s":0.8}]'>
+      <div class="mx-auto max-w-7xl">
+        <h2 class="max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[1.05] tracking-tight">Small jar. <span class="italic text-honey">Enormous effort.</span></h2>
+        <div class="mt-16 grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-4">
+          <div class="stat"><p class="font-display text-[clamp(3rem,7vw,6rem)] font-semibold leading-none text-honey"><span class="count" data-to="60" data-suffix="k">60k</span></p><p class="mt-3 text-cream/60">bees in a single colony</p></div>
+          <div class="stat"><p class="font-display text-[clamp(3rem,7vw,6rem)] font-semibold leading-none text-honey"><span class="count" data-to="2" data-suffix="M">2M</span></p><p class="mt-3 text-cream/60">flower visits per jar</p></div>
+          <div class="stat"><p class="font-display text-[clamp(3rem,7vw,6rem)] font-semibold leading-none text-honey"><span class="count" data-to="0" data-suffix="">0</span></p><p class="mt-3 text-cream/60">additives, ever</p></div>
+          <div class="stat"><p class="font-display text-[clamp(3rem,7vw,6rem)] font-semibold leading-none text-honey"><span class="count" data-to="100" data-suffix="%">100%</span></p><p class="mt-3 text-cream/60">traceable to the hive</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 08 · ANATOMY / EXPLODED VIEW (pinned) ============ -->
+    <section id="anatomy" class="pin"
+      data-bee='[{"at":0,"x":0.82,"y":0.22,"s":0.8,"xm":0.82,"ym":0.16},{"at":1,"x":0.14,"y":0.72,"s":0.8,"xm":0.86,"ym":0.88}]'>
+      <div class="anatomy-copy absolute inset-x-0 top-[12vh] z-10 mx-auto max-w-7xl px-6">
+        <p class="text-xs font-semibold uppercase tracking-[.3em] text-honey">Anatomy of a jar</p>
+        <h2 class="mt-3 max-w-xl font-display text-[clamp(2rem,4.5vw,3.8rem)] font-semibold leading-none tracking-tight">Taken apart. <span class="italic text-honey">Put together right.</span></h2>
+      </div>
+      <div class="anatomy-stage">
+        <div class="layer" style="z-index:4">
+          <svg viewBox="0 0 260 90" aria-hidden="true"><path d="M10 34v22a120 30 0 0 0 240 0V34" fill="#7a4800"/><ellipse cx="130" cy="34" rx="120" ry="30" fill="url(#g-lid)"/></svg>
+          <span class="layer-label text-sm text-cream/80">Gold-leaf lid</span>
+        </div>
+        <div class="layer" style="z-index:3">
+          <svg viewBox="0 0 260 90" aria-hidden="true"><path d="M10 34v14a120 30 0 0 0 240 0V34" fill="#a85e00"/><ellipse cx="130" cy="34" rx="120" ry="30" fill="url(#p-comb)"/></svg>
+          <span class="layer-label text-sm text-cream/80">Comb cap</span>
+        </div>
+        <div class="layer" style="z-index:2">
+          <svg viewBox="0 0 260 110" aria-hidden="true"><path d="M10 34v40a120 30 0 0 0 240 0V34" fill="#b85e00"/><ellipse cx="130" cy="34" rx="120" ry="30" fill="url(#g-honey)"/><ellipse cx="96" cy="28" rx="40" ry="8" fill="#fff" opacity=".25"/></svg>
+          <span class="layer-label text-sm text-cream/80">Raw honey, 340 g</span>
+        </div>
+        <div class="layer" style="z-index:1">
+          <svg viewBox="0 0 260 130" aria-hidden="true"><path d="M10 34v60a120 30 0 0 0 240 0V34" fill="#fff3d6" fill-opacity=".05" stroke="#fff3d6" stroke-opacity=".35" stroke-width="2"/><ellipse cx="130" cy="34" rx="120" ry="30" fill="none" stroke="#fff3d6" stroke-opacity=".45" stroke-width="2"/></svg>
+          <span class="layer-label text-sm text-cream/80">Hand-blown glass</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 09 · PROCESS ============ -->
+    <section id="process" class="py-32 md:py-44"
+      data-bee='[{"at":0,"el":"#process-line","y":0.5,"s":0.55},{"at":1,"el":"#process-line","y":0.5,"s":0.55}]'>
+      <div class="mx-auto max-w-3xl px-6">
+        <p class="text-xs font-semibold uppercase tracking-[.3em] text-honey">From flower to spoon</p>
+        <h2 class="mt-4 font-display text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[1.05] tracking-tight">Four steps. No shortcuts.</h2>
+        <div class="relative mt-20 pl-16 md:pl-24">
+          <div id="process-line" class="absolute bottom-0 left-5 top-0 w-[2px] bg-cream/10 md:left-8">
+            <div id="process-fill" class="absolute inset-0 origin-top bg-gradient-to-b from-honey to-amber"></div>
+          </div>
+          <div class="step relative pb-24"><span class="step-dot"></span><div class="step-body">
+            <p class="text-sm text-honey">01</p><h3 class="mt-2 text-2xl font-semibold md:text-3xl">Forage</h3>
+            <p class="mt-3 text-cream/60">Through late spring, the colony works a single valley of clover, thyme and wild rose.</p></div></div>
+          <div class="step relative pb-24"><span class="step-dot"></span><div class="step-body">
+            <p class="text-sm text-honey">02</p><h3 class="mt-2 text-2xl font-semibold md:text-3xl">Harvest</h3>
+            <p class="mt-3 text-cream/60">Only fully capped frames are lifted, by hand, on one morning in July.</p></div></div>
+          <div class="step relative pb-24"><span class="step-dot"></span><div class="step-body">
+            <p class="text-sm text-honey">03</p><h3 class="mt-2 text-2xl font-semibold md:text-3xl">Cold-extract</h3>
+            <p class="mt-3 text-cream/60">Spun at room temperature and strained once through cloth, never pasteurized.</p></div></div>
+          <div class="step relative"><span class="step-dot"></span><div class="step-body">
+            <p class="text-sm text-honey">04</p><h3 class="mt-2 text-2xl font-semibold md:text-3xl">Jar</h3>
+            <p class="mt-3 text-cream/60">Poured, sealed and numbered within twenty-four hours. Then it comes to you.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10 · REVIEWS ============ -->
+    <section id="reviews" class="overflow-hidden px-6 py-32 md:py-44"
+      data-bee='[{"at":0,"x":0.9,"y":0.2,"s":0.8},{"at":1,"x":0.1,"y":0.78,"s":0.8}]'>
+      <div class="mx-auto max-w-7xl">
+        <h2 class="max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[1.05] tracking-tight">People keep <span class="italic text-honey">licking the spoon.</span></h2>
+        <div class="mt-16 grid gap-6 md:grid-cols-3">
+          <div class="space-y-6" data-speed="0.6">
+            <blockquote class="rounded-3xl border border-cream/10 bg-ink-2 p-8"><p class="text-lg">“It tastes like the field it came from. I didn't know honey could do that.”</p><footer class="mt-6 text-sm text-cream/50">Placeholder review · Lisbon</footer></blockquote>
+            <blockquote class="rounded-3xl border border-cream/10 bg-ink-2 p-8"><p class="text-lg">“The jar alone is worth keeping. The honey didn't last a week.”</p><footer class="mt-6 text-sm text-cream/50">Placeholder review · Austin</footer></blockquote>
+          </div>
+          <div class="space-y-6 md:mt-24" data-speed="-0.4">
+            <blockquote class="rounded-3xl border border-honey/30 bg-honey/10 p-8"><p class="font-display text-2xl italic">“Finally, a honey with a sense of place.”</p><footer class="mt-6 text-sm text-cream/50">Placeholder review · Kyoto</footer></blockquote>
+            <blockquote class="rounded-3xl border border-cream/10 bg-ink-2 p-8"><p class="text-lg">“Scanned the lid, saw the actual hive. Unreasonably delightful.”</p><footer class="mt-6 text-sm text-cream/50">Placeholder review · Berlin</footer></blockquote>
+          </div>
+          <div class="space-y-6" data-speed="0.9">
+            <blockquote class="rounded-3xl border border-cream/10 bg-ink-2 p-8"><p class="text-lg">“Floral, bright, and it crystallizes into something like butter.”</p><footer class="mt-6 text-sm text-cream/50">Placeholder review · Mexico City</footer></blockquote>
+            <blockquote class="rounded-3xl border border-cream/10 bg-ink-2 p-8"><p class="text-lg">“Our tea ritual has a new main character.”</p><footer class="mt-6 text-sm text-cream/50">Placeholder review · London</footer></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11 · CTA (pinned) ============ -->
+    <section id="cta" class="pin flex items-center justify-center px-6 text-center" style="background:#f6b40e;color:#0b0906"
+      data-bee='[{"at":0,"x":0.84,"y":0.2,"s":0.9},{"at":0.7,"el":"#cta-btn","ax":1,"ay":0,"ox":-6,"oy":-22,"s":0.55},{"at":1,"el":"#cta-btn","ax":1,"ay":0,"ox":-6,"oy":-22,"s":0.55}]'>
+      <div class="max-w-3xl">
+        <p class="cta-eyebrow text-xs font-semibold uppercase tracking-[.3em] opacity-70">First harvest · Summer 2027</p>
+        <h2 class="cta-title mt-5 font-display text-[clamp(2.6rem,7vw,6rem)] font-semibold leading-[.98] tracking-tight">Taste the year the bees had.</h2>
+        <p class="cta-sub mx-auto mt-6 max-w-md text-lg opacity-70">Limited to 4,000 numbered jars. Reserve now, pay when it ships.</p>
+        <button id="cta-btn" type="button" class="mt-10 inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-lg font-semibold text-cream transition hover:scale-[1.03]">Reserve a jar — $38 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 12 · FOOTER ============ -->
+  <footer id="footer" class="border-t border-cream/10 px-6 py-16"
+    data-bee='[{"at":1,"x":1.25,"y":0.1,"s":0.5}]'>
+    <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
+      <div>
+        <a href="#hero" class="flex items-center gap-2 font-display text-2xl font-semibold">
+          <svg width="22" height="24" viewBox="0 0 22 24" aria-hidden="true"><path d="M11 1l9.5 5.5v11L11 23 1.5 17.5v-11z" fill="#f6b40e"/></svg>Hive
+        </a>
+        <p class="mt-4 max-w-xs text-sm text-cream/50">Raw honey from bees we know by name. Well, by hive number.</p>
+      </div>
+      <div><h4 class="text-sm font-semibold">Shop</h4><ul class="mt-4 space-y-2 text-sm text-cream/60"><li><a href="#product" class="hover:text-cream">No.01</a></li><li><a href="#gallery" class="hover:text-cream">Collection</a></li><li><a href="#cta" class="hover:text-cream">Pre-order</a></li></ul></div>
+      <div><h4 class="text-sm font-semibold">Story</h4><ul class="mt-4 space-y-2 text-sm text-cream/60"><li><a href="#statement" class="hover:text-cream">Manifesto</a></li><li><a href="#process" class="hover:text-cream">Process</a></li><li><a href="#anatomy" class="hover:text-cream">The jar</a></li></ul></div>
+      <div><h4 class="text-sm font-semibold">Stay in the loop</h4><p class="mt-4 text-sm text-cream/60">One email per harvest. That's it.</p></div>
     </div>
+    <p class="mx-auto mt-14 max-w-7xl text-xs text-cream/40">© 2026 Hive — v1 functional prototype. Fictional brand, placeholder content.</p>
+  </footer>
 
-    <!-- Application JavaScript Logic -->
-    <script>
-        // Mobile Navigation Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+  <script>
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.className = 'fa-solid fa-bars text-2xl';
-            } else {
-                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+    /* ---------- Helpers ---------- */
+
+    // Split text into word-wrapped character spans (hero headline)
+    function splitChars(el) {
+      const words = el.textContent.trim().split(/\s+/);
+      el.textContent = '';
+      el.setAttribute('aria-hidden', 'true');
+      words.forEach((w, i) => {
+        const ww = document.createElement('span');
+        ww.className = 'word-wrap';
+        [...w].forEach(c => {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.textContent = c;
+          ww.appendChild(s);
+        });
+        el.appendChild(ww);
+        if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+    }
+
+    // Split into word spans, keeping the classes of inline elements (statement)
+    function splitWords(el) {
+      const frag = document.createDocumentFragment();
+      el.childNodes.forEach(n => {
+        const cls = n.nodeType === 1 ? n.className : '';
+        n.textContent.split(/(\s+)/).forEach(t => {
+          if (!t) return;
+          if (/^\s+$/.test(t)) return frag.appendChild(document.createTextNode(' '));
+          const s = document.createElement('span');
+          s.className = ('word ' + cls).trim();
+          s.textContent = t;
+          frag.appendChild(s);
+        });
+      });
+      el.textContent = '';
+      el.appendChild(frag);
+    }
+
+    // Layout offset of el inside root (ignores transforms, so it's the "resting" position)
+    function offsetIn(el, root) {
+      let x = 0, y = 0, n = el;
+      while (n && n !== root) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+      return { left: x, top: y, width: el.offsetWidth, height: el.offsetHeight };
+    }
+
+    const outerOf = sec => sec.parentElement.classList.contains('pin-spacer') ? sec.parentElement : sec;
+
+    /* ---------- Section scenes ---------- */
+
+    function navScene() {
+      const nav = $('#nav');
+      gsap.fromTo('#progress', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+      ScrollTrigger.create({
+        start: 120, end: 'max',
+        onUpdate: self => nav.classList.toggle('nav-hidden', self.direction === 1),
+        onLeaveBack: () => nav.classList.remove('nav-hidden'),
+      });
+    }
+
+    function heroScene() {
+      gsap.timeline({ delay: .15 })
+        .from('#hero .char', { yPercent: 110, rotation: 6, opacity: 0, duration: 1, ease: 'power4.out', stagger: .025 })
+        .from('#hero .hero-eyebrow, #hero .hero-sub, #hero .hero-cta, #hero .scroll-cue', { y: 24, opacity: 0, duration: .8, stagger: .1, ease: 'power3.out' }, '-=.6');
+      gsap.to('.cue-dot', { y: 14, duration: .8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+      const st = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to('#hero .hero-inner', { yPercent: -18, scale: .94, opacity: 0, ease: 'none', scrollTrigger: st });
+      gsap.to('#hero .hero-glow', { scale: 1.6, opacity: .25, ease: 'none', scrollTrigger: { ...st } });
+    }
+
+    function statementScene() {
+      gsap.timeline({ scrollTrigger: { trigger: '#statement', start: 'top top', end: '+=150%', pin: true, scrub: 1 } })
+        .fromTo('#statement .word', { opacity: .12 }, { opacity: 1, stagger: .1, ease: 'none' })
+        .fromTo('#statement .statement-meta', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5 });
+    }
+
+    function productScene() {
+      gsap.timeline({ scrollTrigger: { trigger: '#product', start: 'top top', end: '+=200%', pin: true, scrub: 1 } })
+        .fromTo('#jar-wrap', { scale: .45, rotation: -10, y: 120, opacity: .2 }, { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 1, ease: 'power2.out' }, 0)
+        .fromTo('#product .glow', { scale: .2, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, 0)
+        .fromTo('#product .product-copy > *', { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: .08, duration: .4 }, 0)
+        .fromTo('#product .callout', { y: 20, opacity: 0 }, { y: 0, opacity: 1, stagger: .1, duration: .3 }, 1)
+        .to({}, { duration: .3 });
+    }
+
+    function featuresScene() {
+      gsap.fromTo('.feature-card', { y: 80, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 1, stagger: .15, ease: 'power3.out',
+        scrollTrigger: { trigger: '#features .grid', start: 'top 80%', toggleActions: 'play none none reverse' },
+      });
+    }
+
+    function galleryScene() {
+      const track = $('.gallery-track');
+      const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+      const tween = gsap.to(track, {
+        x: () => -dist(), ease: 'none',
+        scrollTrigger: { trigger: '#gallery', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true },
+      });
+      $$('#gallery .panel').forEach(p => {
+        gsap.fromTo(p.querySelector('.drop'), { rotation: -25, scale: .7, y: 40 }, {
+          rotation: 15, scale: 1.05, y: -30, ease: 'none',
+          scrollTrigger: { trigger: p, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true },
+        });
+      });
+    }
+
+    function statsScene() {
+      gsap.fromTo('#stats .stat', { y: 50, opacity: 0 }, {
+        y: 0, opacity: 1, duration: .9, stagger: .12, ease: 'power3.out',
+        scrollTrigger: { trigger: '#stats .grid', start: 'top 80%' },
+      });
+      $$('#stats .count').forEach(el => {
+        const o = { v: 0 }, to = +el.dataset.to, suf = el.dataset.suffix;
+        el.textContent = '0' + suf;
+        gsap.to(o, {
+          v: to, duration: 2, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 85%' },
+          onUpdate: () => { el.textContent = Math.round(o.v) + suf; },
+        });
+      });
+    }
+
+    const layerGap = () => Math.min(130, innerHeight * .14);
+
+    function anatomyScene() {
+      gsap.timeline({ scrollTrigger: { trigger: '#anatomy', start: 'top top', end: '+=150%', pin: true, scrub: 1, invalidateOnRefresh: true } })
+        .fromTo('#anatomy .anatomy-copy', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .3 }, 0)
+        .fromTo('#anatomy .layer', { y: i => (i - 1.5) * 14 }, { y: i => (i - 1.5) * layerGap(), duration: 1, ease: 'power2.inOut' }, .1)
+        .fromTo('#anatomy .layer-label', { x: -20, opacity: 0 }, { x: 0, opacity: 1, stagger: .08, duration: .4 }, .65)
+        .to({}, { duration: .3 });
+    }
+
+    function processScene() {
+      gsap.fromTo('#process-fill', { scaleY: 0 }, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: '#process-line', start: 'top center', end: 'bottom center', scrub: true },
+      });
+      $$('#process .step').forEach(step => {
+        ScrollTrigger.create({ trigger: step, start: 'top center', end: 'max', toggleClass: 'is-active' });
+        gsap.fromTo(step.querySelector('.step-body'), { opacity: .25, x: 30 }, {
+          opacity: 1, x: 0, ease: 'none',
+          scrollTrigger: { trigger: step, start: 'top 75%', end: 'top 45%', scrub: true },
+        });
+      });
+    }
+
+    function reviewsScene() {
+      $$('#reviews [data-speed]').forEach(col => {
+        const s = +col.dataset.speed * 70;
+        gsap.fromTo(col, { y: s }, { y: -s, ease: 'none', scrollTrigger: { trigger: '#reviews', start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+    }
+
+    function ctaScene() {
+      gsap.timeline({ scrollTrigger: { trigger: '#cta', start: 'top top', end: '+=120%', pin: true, scrub: 1 } })
+        .fromTo('#cta', { backgroundColor: '#0b0906', color: '#fff3d6' }, { backgroundColor: '#f6b40e', color: '#0b0906', duration: 1, ease: 'none' }, 0)
+        .fromTo('#cta .cta-title', { scale: .85, opacity: .4 }, { scale: 1, opacity: 1, duration: 1 }, 0)
+        .fromTo('#cta-btn', { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: .4, ease: 'back.out(2)' }, .6)
+        .to({}, { duration: .4 });
+    }
+
+    /* ---------- The bee ---------- */
+
+    const dots = [];
+    let dotIndex = 0;
+    function buildTrailPool() {
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement('div');
+        d.className = 'trail-dot';
+        document.body.appendChild(d);
+        dots.push(d);
+      }
+    }
+    function puff(x, y) {
+      const d = dots[dotIndex++ % dots.length];
+      gsap.killTweensOf(d);
+      gsap.fromTo(d, { x, y, xPercent: -50, yPercent: -50, opacity: .9, scale: 1 },
+        { y: y + 18, opacity: 0, scale: .2, duration: .9, ease: 'power2.out' });
+    }
+
+    function beeScene() {
+      const track = $('#bee'), intro = $('.bee-intro'), bank = $('.bee-bank'), face = $('.bee-face'), float = $('.bee-float');
+      gsap.set(track, { xPercent: -50, yPercent: -50, autoAlpha: 1 });
+
+      // Idle hover: three sine loops with unrelated periods feel organic
+      gsap.to(float, { y: -16, duration: 1.5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      gsap.to(float, { x: 8, duration: 2.3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      gsap.to(float, { rotation: 4, duration: 1.9, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      gsap.to('#antennae', { rotation: 7, svgOrigin: '150 68', duration: .9, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+      // Wing flap; timeScale is driven by scroll velocity
+      const wings = gsap.timeline({ repeat: -1, yoyo: true })
+        .to('#wing-front', { rotation: -32, scaleY: .6, svgOrigin: '98 66', duration: .055, ease: 'sine.inOut' }, 0)
+        .to('#wing-back', { rotation: 30, scaleY: .6, svgOrigin: '104 66', duration: .055, ease: 'sine.inOut' }, 0);
+
+      // Entrance
+      gsap.from(intro, { x: -innerWidth * .7, y: innerHeight * .35, scale: .3, rotation: -25, duration: 2.4, ease: 'power3.out', delay: .2 });
+
+      // Scroll path, rebuilt from data-bee waypoints on every refresh
+      const state = { p: 0 };
+      let beeTl = null;
+
+      function buildBee() {
+        if (beeTl) beeTl.kill();
+        const vw = innerWidth, vh = innerHeight, mobile = vw < 768;
+        const max = ScrollTrigger.maxScroll(window) || 1;
+        const pts = [];
+
+        $$('[data-bee]').forEach(sec => {
+          const wrap = outerOf(sec), pinned = wrap !== sec;
+          const top = wrap.getBoundingClientRect().top + scrollY;
+          JSON.parse(sec.dataset.bee).forEach(w => {
+            // Pinned: at 0..1 spans the pin. Otherwise: section top at viewport center -> bottom at center.
+            const S = gsap.utils.clamp(0, max, pinned
+              ? top + w.at * (wrap.offsetHeight - vh)
+              : top - vh * .5 + w.at * sec.offsetHeight);
+            let x = mobile && w.xm != null ? w.xm : w.x;
+            let y = mobile && w.ym != null ? w.ym : w.y;
+            x = x != null ? x * vw : null;
+            y = y != null ? y * vh : null;
+            if (w.el) {
+              const o = offsetIn($(w.el, sec), sec);
+              if (x == null) x = o.left + o.width * (w.ax ?? .5);
+              if (y == null) y = (pinned ? 0 : top - S) + o.top + o.height * (w.ay ?? .5);
             }
+            pts.push({ S, x: x + (w.ox || 0), y: y + (w.oy || 0), s: (w.s ?? 1) * (mobile ? .8 : 1) });
+          });
         });
+        pts.sort((a, b) => a.S - b.S);
 
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.className = 'fa-solid fa-bars text-2xl';
-            });
+        // A fresh paused timeline won't render at progress 0, so place the bee explicitly
+        gsap.set(track, { x: pts[0].x, y: pts[0].y, scale: pts[0].s });
+        beeTl = gsap.timeline({ paused: true });
+        beeTl.set(track, { x: pts[0].x, y: pts[0].y, scale: pts[0].s }, 0);
+        pts.forEach((a, i) => {
+          const b = pts[i + 1];
+          if (!b) return;
+          const t = a.S / max, d = (b.S - a.S) / max;
+          if (d <= .0001) return beeTl.set(track, { x: b.x, y: b.y, scale: b.s }, t);
+          const dx = b.x - a.x, dy = b.y - a.y, dist = Math.hypot(dx, dy);
+          if (dist < 4) return beeTl.to(track, { x: b.x, y: b.y, scale: b.s, duration: d, ease: 'none' }, t);
+          // Swoop: bend each leg sideways, alternating sides
+          const bend = Math.min(dist * .3, 180) * (i % 2 ? 1 : -1);
+          const mid = { x: a.x + dx / 2 - dy / dist * bend, y: a.y + dy / 2 + dx / dist * bend };
+          beeTl.to(track, {
+            motionPath: { path: [{ x: a.x, y: a.y }, mid, { x: b.x, y: b.y }], curviness: 1.25, fromCurrent: false },
+            scale: b.s, duration: d, ease: 'sine.inOut',
+          }, t);
         });
+        if (beeTl.duration() < 1) beeTl.set({}, {}, 1);
+        beeTl.progress(state.p);
+      }
 
-        // Modal Functionality
-        function openModal(title, text, iconClass = 'fa-circle-info') {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDescription').innerText = text;
-            document.getElementById('modalIcon').innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
-            document.getElementById('appModal').classList.remove('hidden');
+      // Smoothed scroll progress + velocity-driven wing speed
+      const master = ScrollTrigger.create({
+        start: 0, end: 'max',
+        onUpdate: self => {
+          gsap.to(state, { p: self.progress, duration: .8, ease: 'power3.out', overwrite: true });
+          const v = Math.abs(self.getVelocity());
+          gsap.to(wings, { timeScale: 1 + Math.min(v / 600, 3), duration: .2, overwrite: true });
+        },
+      });
+      const calm = () => gsap.to(wings, { timeScale: 1, duration: .8, overwrite: true });
+      const onRefresh = () => { state.p = master.progress; buildBee(); };
+      ScrollTrigger.addEventListener('scrollEnd', calm);
+      ScrollTrigger.addEventListener('refresh', onRefresh);
+
+      // Per-frame: apply path, face direction of travel, bank into turns, leave a trail
+      const bankTo = gsap.quickTo(bank, 'rotation', { duration: .5, ease: 'power3.out' });
+      let lastX = null, lastY = null, facing = 1, frame = 0;
+      function render() {
+        if (!beeTl) return;
+        beeTl.progress(state.p);
+        const x = gsap.getProperty(track, 'x'), y = gsap.getProperty(track, 'y'), s = gsap.getProperty(track, 'scale');
+        if (lastX === null) { lastX = x; lastY = y; return; }
+        const dx = x - lastX, dy = y - lastY;
+        lastX = x; lastY = y;
+        if (Math.abs(dx) > 1.2) {
+          const f = dx > 0 ? 1 : -1;
+          if (f !== facing) { facing = f; gsap.to(face, { scaleX: f, duration: .35, ease: 'power2.out' }); }
         }
-
-        function closeModal() {
-            document.getElementById('appModal').classList.add('hidden');
+        bankTo(gsap.utils.clamp(-30, 30, (dy * 1.2 + Math.abs(dx) * .3) * facing));
+        if (Math.hypot(dx, dy) > 4 && ++frame % 2 === 0) {
+          puff(x - facing * track.offsetWidth * s * .42, y + track.offsetHeight * s * .05);
         }
+      }
+      gsap.ticker.add(render);
 
-        // Add to Cart Simulation with COP pricing
-        function addToCart(product, price) {
-            openModal(
-                '¡Producto seleccionado!', 
-                `Has elegido el ${product} por valor de ${price}. Te redirigiremos al proceso de pago seguro en Colombia con envío gratis.`,
-                'fa-cart-shopping'
-            );
-        }
+      return () => {
+        gsap.ticker.remove(render);
+        ScrollTrigger.removeEventListener('scrollEnd', calm);
+        ScrollTrigger.removeEventListener('refresh', onRefresh);
+        if (beeTl) beeTl.kill();
+      };
+    }
 
-        // News article modal
-        function readNews(id, title) {
-            openModal(
-                `Noticia #${id}: ${title}`, 
-                `Cargando artículo completo... Gracias por interesarte en la tecnología y cuidado de mascotas con GPETs.`,
-                'fa-newspaper'
-            );
-        }
+    // Reduced motion: no scroll choreography, the bee rests in a corner
+    function staticScene() {
+      gsap.set('#bee', { xPercent: -50, yPercent: -50, x: innerWidth - 70, y: innerHeight - 60, scale: .5, autoAlpha: 1 });
+      gsap.set('#anatomy .layer', { y: i => (i - 1.5) * layerGap() });
+    }
 
-        // Lightbox Gallery Viewer
-        function openLightbox(imgSrc, caption) {
-            document.getElementById('lightboxImage').src = imgSrc;
-            document.getElementById('lightboxCaption').innerText = caption;
-            document.getElementById('lightboxModal').classList.remove('hidden');
-        }
+    /* ---------- Nav links (pin-aware smooth scroll) ---------- */
 
-        function closeLightbox() {
-            document.getElementById('lightboxModal').classList.add('hidden');
-        }
+    function initNavLinks() {
+      $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+        const target = $(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: outerOf(target).getBoundingClientRect().top + scrollY, behavior: reduce ? 'auto' : 'smooth' });
+      }));
+    }
 
-        // Handle Contact Form Submit
-        function handleContact(event) {
-            event.preventDefault();
-            const name = document.getElementById('formName').value;
-            const city = document.getElementById('formCity').value;
+    /* ---------- Boot ---------- */
 
-            openModal(
-                '¡Mensaje Recibido!', 
-                `Muchas gracias ${name} desde ${city}. Un asesor de GPETs se pondrá en contacto contigo muy pronto.`,
-                'fa-paper-plane'
-            );
-            document.getElementById('contactForm').reset();
-        }
-    </script>
+    function init() {
+      $$('#hero .split').forEach(splitChars);
+      splitWords($('#statement-text'));
+      buildTrailPool();
+
+      gsap.matchMedia().add({
+        motion: '(prefers-reduced-motion: no-preference)',
+        reduce: '(prefers-reduced-motion: reduce)',
+      }, ctx => {
+        if (ctx.conditions.reduce) return staticScene();
+        // Created in document order so pin spacing stacks correctly
+        navScene();
+        heroScene();
+        statementScene();
+        productScene();
+        featuresScene();
+        galleryScene();
+        statsScene();
+        anatomyScene();
+        processScene();
+        reviewsScene();
+        ctaScene();
+        return beeScene();
+      });
+
+      initNavLinks();
+      ScrollTrigger.refresh();
+      document.fonts?.ready.then(() => ScrollTrigger.refresh());
+    }
+
+    // Wait for Tailwind (runtime-compiled) and layout to settle before measuring
+    window.addEventListener('load', () => requestAnimationFrame(() => requestAnimationFrame(init)));
+  </script>
 </body>
 </html>
